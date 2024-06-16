@@ -35,6 +35,9 @@ Bu proje, Türkiye Cumhuriyeti'nin resmi TC Kimlik No doğrulama hizmetini sağl
    
 5. **Sonucun Gösterilmesi**: Doğrulama işleminin sonucuna göre kullanıcıya başarılı veya başarısız mesajı gösterilir.
 
+### Uyarı
+
+API servisi kaynaklı olarak AD ve SOYAD bilgileri gönderilirken büyük harf ile gönderilmek zorundadır, aksi taktirde kişi doğrulanamaz. Türkçe karakter kullanılabilir. 
 ---
 
 Bu proje, Alperen İrtik tarafından geliştirilmiş olup, herkesin kullanımına açıktır ve TC Kimlik numarası doğrulama işlemlerini hızlı ve güvenilir bir şekilde gerçekleştirmeyi sağlar.
