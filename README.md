@@ -1,36 +1,37 @@
-# tcaipdogrulama
-Bu proje, Türkiye Cumhuriyeti'nin resmi TC Kimlik No doğrulama hizmetini sağlayan http://tckimlik.nvi.gov.tr/WS/TCKimlikNoDogrula API servisini kullanarak TC Kimlik numarası doğrulaması yapmaktadır. HTML formu üzerinden POST metoduyla kullanıcıdan TC Kimlik numarası, ad, soyad ve doğum yılı gibi bilgileri alır ve bu bilgileri SOAP (Simple Object Access Protocol) isteği olarak API'ye gönderir.
+# TC Kimlik Numarası Doğrulama Projesi
 
-İşleyiş şu adımları içerir:
+Bu proje, Türkiye Cumhuriyeti'nin resmi TC Kimlik No doğrulama hizmetini sağlayan [TC Kimlik No Doğrula API servisi](http://tckimlik.nvi.gov.tr/WS/TCKimlikNoDogrula) kullanarak TC Kimlik numarası doğrulaması yapmayı amaçlamaktadır. Kullanıcıya HTML formu üzerinden TC Kimlik numarası, ad, soyad ve doğum yılı gibi bilgileri girmesi için bir arayüz sunar. Form, bu bilgileri PHP aracılığıyla sunucuya POST eder.
 
-HTML Formu: Kullanıcıya TC Kimlik numarası, ad, soyad ve doğum yılı alanlarını doldurması için bir form sunar.
-POST Metodu: Form, kullanıcının bilgilerini PHP aracılığıyla sunucuya POST eder.
-SOAP İsteği Oluşturma: Girilen bilgileri içeren SOAP isteği oluşturulur. Bu istek, TC Kimlik numarası doğrulama servisine gönderilir.
-CURL İle API İstemi Gönderme: Oluşturulan SOAP isteği, cURL kullanılarak Türkiye Cumhuriyeti Nüfus ve Vatandaşlık İşleri Genel Müdürlüğü'nün sunucusuna iletilir.
+## İşleyiş
 
-Cevap Alma ve İşleme: Sunucudan gelen cevap alınır ve bu cevap doğrulama işleminin başarılı mı yoksa başarısız mı olduğunu belirten bir metin içerir.
-Kullanıcıya Geri Bildirim: İşlem sonucuna göre kullanıcıya başarılı veya başarısız doğrulama mesajı gösterilir.
-Bu proje, Alperen İrtik tarafından geliştirilmiş olup, herkese açık bir şekilde kullanılabilir. Kullanıcıların TC Kimlik numaralarını doğrulamak için kullanabilecekleri basit ve etkili bir çözüm sunar.
+1. **HTML Formu**: Kullanıcıya TC Kimlik numarası, ad, soyad ve doğum yılı alanlarını doldurması için bir form sunar.
+   
+2. **POST Metodu**: Kullanıcının girdiği bilgileri PHP aracılığıyla sunucuya POST eder.
+   
+3. **SOAP İsteği Oluşturma**: Girilen bilgileri içeren SOAP isteği oluşturulur ve TC Kimlik numarası doğrulama servisine gönderilir.
+   
+4. **cURL ile API İsteği Gönderme**: Oluşturulan SOAP isteği, cURL kullanılarak Nüfus ve Vatandaşlık İşleri Genel Müdürlüğü'nün sunucusuna iletilir.
+   
+5. **Cevap Alma ve İşleme**: Sunucudan gelen cevap başarılı veya başarısız doğrulama işlemini belirten bir metin içerir.
+   
+6. **Kullanıcı Geri Bildirimi**: İşlem sonucuna göre kullanıcıya doğrulama başarılı veya başarısız mesajı gösterilir.
 
-Genel olarak, projenin amacı kullanıcıların girdikleri bilgilerle TC Kimlik numaralarını doğrulayabilmesini sağlamak ve bu işlemi güvenilir bir şekilde yapabilmek için resmi devlet hizmeti olan API'yi kullanmaktır.
+## GET Metodu Kullanımı
 
-GET METHODU KULLANIMI:
+`API.php` dosyası, TC Kimlik numarası doğrulama işlemini GET metoduyla gerçekleştirir. Kullanıcıdan TC Kimlik numarası, ad, soyad ve doğum yılı gibi bilgileri URL üzerinden GET parametreleri olarak alır. Ardından bu bilgileri kullanarak SOAP formatında bir istek oluşturur ve cURL ile API'ye gönderir.
 
-API.php dosyası, TC Kimlik numarası doğrulama işlemini GET metoduyla gerçekleştirmek üzere tasarlanmıştır. Bu dosya, kullanıcılardan TC Kimlik numarası, ad, soyad ve doğum yılı gibi bilgileri GET parametreleri olarak alır, ardından bu bilgileri kullanarak TC Kimlik No doğrulama API'sine SOAP isteği yapar.
+### İşleyiş
 
-İşleyiş şu adımları içerir:
+1. **Parametreleri Alma**: URL üzerinden gelen parametreleri `$_GET` global değişkeniyle alır.
+   
+2. **SOAP İsteği Oluşturma**: Alınan parametrelerle SOAP formatında bir istek oluşturulur.
+   
+3. **cURL ile API İsteği Gönderme**: Oluşturulan SOAP isteği, cURL kullanılarak ilgili sunucuya iletilir.
+   
+4. **Cevap Alma ve İşleme**: Sunucudan gelen cevap doğrulama işleminin başarılı veya başarısız olduğunu belirtir.
+   
+5. **Sonucun Gösterilmesi**: Doğrulama işleminin sonucuna göre kullanıcıya başarılı veya başarısız mesajı gösterilir.
 
-Parametreleri Alma: $_GET global değişkeniyle URL üzerinden gelen parametreleri alır.
-SOAP İsteği Oluşturma: tcdogrula fonksiyonu, aldığı parametreleri kullanarak SOAP formatında bir istek oluşturur.
-CURL ile API İstemi Gönderme: Oluşturulan SOAP isteği, cURL kullanılarak Türkiye Cumhuriyeti Nüfus ve Vatandaşlık İşleri Genel Müdürlüğü'nün sunucusuna iletilir.
+---
 
-Cevap Alma ve İşleme: Sunucudan gelen cevap alınır ve bu cevap doğrulama işleminin başarılı mı yoksa başarısız mı olduğunu belirten bir metin içerir.
-Sonucun Gösterilmesi: Doğrulama işleminin sonucuna göre ekrana başarılı veya başarısız mesajı yazdırılır.
-
-Örnek kullanım:
-GET parametrelerini aşağıdaki şekilde kullanarak API'yi çağırabilirsiniz:
-/api.php?tcno=00000000000&ad=AD&soyad=SOYAD&dogumyili=1990
-
-Bu örnekte tcno, ad, soyad ve dogumyili parametreleri, TC Kimlik numarası doğrulama işlemi için gerekli bilgileri temsil eder. Bu bilgileri değiştirerek veya ekleyerek isteğinizi özelleştirebilirsiniz.
-
-API.php dosyası, kullanımı kolay bir doğrulama aracı olarak tasarlanmış olup, herkesin kullanımına açıktır ve GET metodunu kullanarak hızlı bir şekilde TC Kimlik numarası doğrulaması yapılmasını sağlar.
+Bu proje, Alperen İrtik tarafından geliştirilmiş olup, herkesin kullanımına açıktır ve TC Kimlik numarası doğrulama işlemlerini hızlı ve güvenilir bir şekilde gerçekleştirmeyi sağlar.
