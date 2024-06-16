@@ -1,6 +1,6 @@
 # TC Kimlik Numarası Doğrulama PHP
 
-Bu proje, Türkiye Cumhuriyeti'nin resmi TC Kimlik No doğrulama hizmetini sağlayan [TC Kimlik No Doğrula API servisi](http://tckimlik.nvi.gov.tr/WS/TCKimlikNoDogrula) kullanarak TC Kimlik numarası doğrulaması yapmayı amaçlamaktadır. Kullanıcıya HTML formu üzerinden TC Kimlik numarası, ad, soyad ve doğum yılı gibi bilgileri girmesi için bir arayüz sunar. Form, bu bilgileri PHP aracılığıyla sunucuya POST eder. Dilerseniz `API.php` dosyası aracığıylada 'GET' methodu ile kullanabilirsiniz.
+Bu proje, Türkiye Cumhuriyeti'nin resmi TC Kimlik No doğrulama hizmetini sağlayan [TC Kimlik No Doğrula API servisi](http://tckimlik.nvi.gov.tr/WS/TCKimlikNoDogrula) kullanarak TC Kimlik numarası doğrulaması yapmayı amaçlamaktadır. Kullanıcıya HTML formu üzerinden TC Kimlik numarası, ad, soyad ve doğum yılı gibi bilgileri girmesi için bir arayüz sunar. Form, bu bilgileri PHP aracılığıyla sunucuya POST eder. Dilerseniz `API.php` dosyası aracılığı GET methodu ile kullanabilirsiniz.
 
 ## İşleyiş
 
